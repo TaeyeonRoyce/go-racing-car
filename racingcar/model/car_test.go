@@ -28,3 +28,22 @@ func TestNewCar(t *testing.T) {
 		})
 	}
 }
+
+func TestMoveForwardByNumber(t *testing.T) {
+	testCases := []struct {
+		car              Car
+		expectedPosition int
+		randomNumber     int
+	}{
+		{Car{Name: "a", Position: 0}, 1, 4},
+		{Car{Name: "a", Position: 0}, 0, 3},
+	}
+
+	for _, test := range testCases {
+		t.Run("", func(t *testing.T) {
+			car := test.car
+			car.MoveForwardByNumber(test.randomNumber)
+			assert.Equal(t, test.expectedPosition, car.Position)
+		})
+	}
+}
