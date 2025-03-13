@@ -18,3 +18,24 @@ func (r *RacingGame) PlaySingleRound() {
 		go car.MoveForwardByNumber(util.GenerateRandomNumber())
 	}
 }
+
+func (r *RacingGame) FindWinners() *Cars {
+	winnerPosition := r.findWinnerPosition()
+	winners := make(Cars, 0)
+	for _, car := range *r.Cars {
+		if car.Position == winnerPosition {
+			winners = append(winners, car)
+		}
+	}
+	return &winners
+}
+
+func (r *RacingGame) findWinnerPosition() int {
+	maxPosition := 0
+	for _, car := range *r.Cars {
+		if car.Position > maxPosition {
+			maxPosition = car.Position
+		}
+	}
+	return maxPosition
+}
