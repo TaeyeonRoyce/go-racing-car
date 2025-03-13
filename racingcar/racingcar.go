@@ -1,6 +1,7 @@
-package racingcar
+package main
 
-// 예시 함수, 구현 시 제거
-func Hello() string {
-	return "Hello, Racing Car!"
+import "github.com/TaeyeonRoyce/go-racing-car/controller"
+
+func main() {
+	controller.Run()
 }
