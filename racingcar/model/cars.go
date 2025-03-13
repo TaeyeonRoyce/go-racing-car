@@ -6,7 +6,7 @@ var _duplicateCarNameError = errors.New("중복된 자동차 이름이 존재합
 
 type Cars []*Car
 
-func NewCarsFromNames(names []string) (Cars, error) {
+func NewCarsFromNames(names []string) (*Cars, error) {
 	cars := make(Cars, len(names))
 	for i, name := range names {
 		car, err := NewCar(name)
@@ -18,7 +18,7 @@ func NewCarsFromNames(names []string) (Cars, error) {
 	if err := validateDuplicateCarNames(cars); err != nil {
 		return nil, err
 	}
-	return cars, nil
+	return &cars, nil
 }
 
 func validateDuplicateCarNames(cars Cars) error {
