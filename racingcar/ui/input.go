@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -25,4 +26,24 @@ func splitCarsByDelimiter(line, delimiter string) []string {
 		cars = append(cars, strings.TrimSpace(carName))
 	}
 	return cars
+}
+
+func ReadTrialCount() int {
+	fmt.Println("시도할 회수는 몇 회인가요?")
+	line, err := reader.ReadString('\n')
+	if err != nil {
+		panic(errors.New("입력을 읽을 수 없습니다"))
+	}
+	return parseTrialCount(strings.TrimSpace(line))
+}
+
+func parseTrialCount(line string) int {
+	trialCount, err := strconv.Atoi(line)
+	if err != nil {
+		panic(errors.New("회수는 숫자로 입력해주세요"))
+	}
+	if trialCount <= 0 {
+		panic(errors.New("회수는 0보다 커야합니다"))
+	}
+	return trialCount
 }
