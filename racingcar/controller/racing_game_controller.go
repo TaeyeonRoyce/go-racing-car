@@ -21,8 +21,9 @@ func readCars() *carModels.Cars {
 	return cars
 }
 
-func playGame(game carModels.RacingGame) {
+func playGame(game *carModels.RacingGame) {
 	for i := 0; i < game.TrialCount; i++ {
 		game.PlaySingleRound()
+		ui.PrintCurrentPositions(game.Cars)
 	}
 }

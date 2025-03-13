@@ -23,7 +23,7 @@ func TestNewCarsFromNames(t *testing.T) {
 			assert.ErrorIs(t, err, test.expectedError)
 
 			if err == nil {
-				assert.Equal(t, test.expectedCarCount, len(cars))
+				assert.Equal(t, test.expectedCarCount, len(*cars))
 			}
 		})
 	}
@@ -44,7 +44,7 @@ func TestValidateDuplicationCarNames(t *testing.T) {
 			assert.ErrorIs(t, err, test.expectedError)
 
 			if err == nil {
-				assert.Equal(t, len(cars), len(cars))
+				assert.Equal(t, len(*cars), len(*cars))
 			}
 		})
 	}
