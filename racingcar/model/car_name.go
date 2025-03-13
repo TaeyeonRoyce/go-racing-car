@@ -18,3 +18,7 @@ func NewCarName(name string) (CarName, error) {
 	}
 	return CarName(name), nil
 }
+
+func (c CarName) Value() string {
+	return string(c)
+}

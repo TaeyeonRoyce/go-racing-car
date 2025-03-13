@@ -26,4 +26,7 @@ func playGame(game *carModels.RacingGame) {
 		game.PlaySingleRound()
 		ui.PrintCurrentPositions(game.Cars)
 	}
+
+	winners := game.FindWinners()
+	ui.PrintWinners(winners)
 }

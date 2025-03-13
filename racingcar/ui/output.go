@@ -12,3 +12,11 @@ func PrintCurrentPositions(cars *model.Cars) {
 	}
 	fmt.Println()
 }
+
+func PrintWinners(winners *model.Cars) {
+	var winnerNames []string
+	for _, winner := range *winners {
+		winnerNames = append(winnerNames, winner.Name.Value())
+	}
+	fmt.Println("최종 우승자:", strings.Join(winnerNames, ", "))
+}
